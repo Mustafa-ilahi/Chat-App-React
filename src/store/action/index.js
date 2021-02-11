@@ -8,7 +8,15 @@ const facebook_login = () => {
         .then(function (result){
             var token = result.credential.accessToken;
             var user = result.user;
-            console.log("user==>>",user);
+
+            let create_user = {
+                name: user.displayName,
+                email: user.email,
+                profile: user.photoURL,
+                uid: user.uid
+            }
+            
+            console.log("user==>>",create_user);
         }).catch(function (error){
             var errorCode = error.code;
             var errorMessage = error.errorMessage;
