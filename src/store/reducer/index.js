@@ -1,10 +1,16 @@
   
 const INITIAL_STATE = {
-    username: "Mustafa Ilahi",
-    email: "mustafailahi586@gmail.com"
+    users: [],
+    current_user: {}
 }
 
 export default (state = INITIAL_STATE ,action)=>{
-    console.log(action)
+    switch (action.type) {
+        case "SETUSER":
+            return({
+                ...state,
+                current_user : action.payload
+            })
+        }
     return state;
 }

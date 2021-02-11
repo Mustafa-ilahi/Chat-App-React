@@ -5,11 +5,11 @@ import { facebook_login } from '../../store/action';
 
 class Home extends Component{
   render(){
-      // console.log("props==>", this.props);
+      
     return(
       <div>
         <h1>Home</h1>
-        <button onClick={()=> this.props.facebook_login()}>Facebook Login</button>
+        <button onClick={()=> this.props.facebook_login(this.props.history)}>Facebook Login</button>
       </div>
     )
   }
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => (
 )
 
 const mapDispatchToProps = (dispatch) => ({
-    facebook_login: () => dispatch(facebook_login())
+    facebook_login: (history) => dispatch(facebook_login(history))
   })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,7 +1,7 @@
 import firebase from '../../config/firebase';
 
 
-const facebook_login = () => {
+const facebook_login = (history) => {
     return(dispatch) => {
         var provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
@@ -15,8 +15,11 @@ const facebook_login = () => {
                 profile: user.photoURL,
                 uid: user.uid
             }
-            
-            console.log("user==>>",create_user);
+            firebase.database().ref('/').child(`users/ ${user.uid}`).set(create_user)
+            .then(()=>{
+                dispatch({type: "SETUSER", payload: create_user})
+                history.push('./chat');
+            })
         }).catch(function (error){
             var errorCode = error.code;
             var errorMessage = error.errorMessage;
