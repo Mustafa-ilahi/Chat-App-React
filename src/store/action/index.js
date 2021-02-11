@@ -1,4 +1,6 @@
-import firebase from '../../config/firebase'
+import firebase from '../../config/firebase';
+
+
 const facebook_login = () => {
     return(dispatch) => {
         var provider = new firebase.auth.FacebookAuthProvider();

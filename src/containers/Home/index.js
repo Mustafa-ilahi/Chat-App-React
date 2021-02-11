@@ -10,8 +10,6 @@ class Home extends Component{
       <div>
         <h1>Home</h1>
         <button onClick={()=> this.props.facebook_login()}>Facebook Login</button>
-        {/* <br /> */}
-        {/* <button onClick={() => this.props.set_data("mai data hun...!")}>Set Data</button> */}
       </div>
     )
   }
@@ -25,7 +23,6 @@ const mapStateToProps = (state) => (
 )
 
 const mapDispatchToProps = (dispatch) => ({
-    // set_data: (data) => dispatch(set_data(data)),
     facebook_login: () => dispatch(facebook_login())
   })
 
