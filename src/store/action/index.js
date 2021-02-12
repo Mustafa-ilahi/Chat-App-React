@@ -23,11 +23,23 @@ const facebook_login = (history) => {
         }).catch(function (error){
             var errorCode = error.code;
             var errorMessage = error.errorMessage;
-            console.log(errorMessage)
+            console.log(errorMessage);
         });
     }
 }
 
+const get_users = () =>{
+    let users = [];
+    return(dispatch) =>{
+        firebase.database().ref('/').child('users').on("child_added",(data)=>{
+            users.push(data.val());
+        })
+        console.log("Firebase data ",users)
+        dispatch({type:"GETALLUSERS",payload:users});
+    }
+}
+
 export{
-    facebook_login
+    facebook_login,
+    get_users
 }

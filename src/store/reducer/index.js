@@ -11,6 +11,11 @@ export default (state = INITIAL_STATE ,action)=>{
                 ...state,
                 current_user : action.payload
             })
+        case "GETALLUSERS":
+            return({
+                ...state,
+                users : action.payload
+            })
         }
-    return state;
-}
+        return state;
+    }

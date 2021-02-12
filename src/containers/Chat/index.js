@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import './style.css';
 import { connect } from 'react-redux';
+import { get_users } from "../../store/action";
+import { bindActionCreators } from 'redux';
 
 class Chat extends Component{
+    componentDidMount(){
+        this.props.get_users();
+    }
+
     render(){
-        console.log(this.props);
+
         let user = this.props.current_user;
         return(
             <div>
@@ -16,6 +22,11 @@ class Chat extends Component{
                 <div>
                     <div>
                         <h3>Chat Users:</h3>
+                        <ul>
+                            {this.props.users.map((v,i)=>{
+                                return v.uid !== user.uid && <li key={i}><img src={v.profile} alt="" width="20" /> {v.name} <button>Chat</button></li> 
+                                }) }
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -24,8 +35,11 @@ class Chat extends Component{
 }
 
 const mapStateToProps = (state) => ({
-      current_user : state.current_user
+      current_user : state.current_user,
+      users : state.users
   })
 
-
-export default connect(mapStateToProps, null)(Chat);
+const mapDispatchToProps = (dispatch) => ({
+    get_users: () => dispatch(get_users())
+  })
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);
