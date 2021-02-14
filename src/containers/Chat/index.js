@@ -19,7 +19,7 @@ class Chat extends Component{
                     <img src={user.profile} />
                     <h3>Email: {user.email}</h3>
                 </div>
-                <div>
+                <div className="mainDiv">
                     <div>
                         <h3>Chat Users:</h3>
                         <ul>
@@ -27,6 +27,13 @@ class Chat extends Component{
                                 return v.uid !== user.uid && <li key={i}><img src={v.profile} alt="" width="20" /> {v.name} <button>Chat</button></li> 
                                 }) }
                         </ul>
+                    </div>
+                    <div className="chatBox">
+                        <h1>Messenger</h1>
+                        <div className="messageInput">
+                        <input type="text" placeholder="Enter Message"/>
+                        <button className="sendBtn">Send</button>
+                        </div>
                     </div>
                 </div>
             </div>
