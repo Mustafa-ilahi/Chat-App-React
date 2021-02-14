@@ -9,7 +9,8 @@ class Chat extends Component{
         super()
         this.state = {
             chat_user : {},
-            chat : []
+            chat : [],
+            message : ""
         }
     }
     componentDidMount(){
@@ -21,6 +22,10 @@ class Chat extends Component{
         this.setState({
             chat_user : user
         })
+    }
+
+    send_message = () =>{
+        console.log( "message=>",this.state.message);
     }
 
     render(){
@@ -47,14 +52,19 @@ class Chat extends Component{
                         <h4> &nbsp; &nbsp;
                         <img src={this.state.chat_user.profile} width="20"/> &nbsp; 
                         {this.state.chat_user.name}
+                        <ul>
+                            {this.state.chat.map((v,i)=>{
+                                return <li key={i}>{v.message}</li>
+                            })}
+                        </ul>
                             </h4>
                             :
                             <h4 style={{textAlign:"center"}}> No user</h4>
                     }
                         <div className="messageInput">
                              
-                            <input type="text" placeholder="Enter Message"/>
-                            <button className="sendBtn">Send</button>
+                            <input value={this.state.message} onChange={(e)=> this.setState({message: e.target.value})} type="text" placeholder="Enter Message"/>
+                            <button className="sendBtn" onClick={()=> this.send_message()}>Send</button>
                         </div>
                         
                     </div>
