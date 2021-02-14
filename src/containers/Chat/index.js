@@ -25,7 +25,13 @@ class Chat extends Component{
     }
 
     send_message = () =>{
-        console.log( "message=>",this.state.message);
+        this.state.chat.push({
+            message:this.state.message
+        })
+        this.setState({
+            chat: this.state.chat,
+            message: ""
+        })
     }
 
     render(){
@@ -41,7 +47,7 @@ class Chat extends Component{
                         <h3>Chat Users:</h3>
                         <ul>
                             {this.props.users.map((v,i)=>{
-                                return   user.uid !== v.uid && <li key={i}><img src={v.profile} alt="" width="20" /> {v.name} 
+                                return  user.uid !== v.uid && <li key={i}><img src={v.profile} alt="" width="20" /> {v.name} 
                                 <button onClick={()=> this.chat(v)}>Chat</button></li> 
                                 }) }
                         </ul>
