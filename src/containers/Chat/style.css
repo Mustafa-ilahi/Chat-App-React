@@ -27,7 +27,7 @@ input{
 
 .messageInput{
     position: relative;
-    top: 75%;
+    top: 68%;
 }
 
 .sendBtn{
@@ -39,4 +39,13 @@ input{
 
 .sendBtn:hover{
     cursor: pointer;
+}
+
+.chatBox > h4 {
+    text-align: left;
+}
+
+#head{
+    position: relative;
+    bottom: 15px;
 }
