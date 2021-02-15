@@ -34,6 +34,14 @@ class Chat extends Component{
         })
     }
 
+    uid_merge = (uid1,uid2) =>{
+        if(uid1<uid2){
+            return uid1 + uid2;
+        }
+        else{
+            return uid2 + uid1;
+        }
+    }
     render(){
         // console.log(this.state.chat_user);
         let user = this.props.current_user;
