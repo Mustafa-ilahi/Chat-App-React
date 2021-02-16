@@ -9,12 +9,16 @@
 .chatBox{
     width: 540px ;
     height: 565px;
-    background-color: gray;
+    /* background-color: gray; */
+    background-image: url(../../assets/chatDiv.jpg);
+    background-size: 300px 406px;
+    opacity: 0.8;
     margin: 0 auto;
     border-radius: 5%;
     text-align: center;
     overflow-y: scroll; 
     overflow-x: hidden; 
+    /* order: 1; */
 }
 
 input{
@@ -52,9 +56,8 @@ input{
 
 @media only screen and (max-width: 500px){
     .chatBox{
-        height: 200px;
-        width: 400px;
-        overflow-y: scroll; 
+        width: 305px !important;
+        height: 500px;
     }
     .messageInput{
         position: relative;
@@ -63,4 +66,37 @@ input{
     input{
         width: 200px !important;
     }
+    #home_img{
+        height: 193px !important;
+        width: 293px !important;
+    }
+}
+
+h3,h2, #chatUsers,h4{
+    color: whitesmoke;
+}
+
+.chatBtn{
+    background-color: darkcyan;
+    font-size: 15px;
+    border: none;
+    color: silver;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+}
+.chatBtn:focus{
+    background-color: silver;
+    color: darkcyan;
+}
+
+.home_div{
+    text-align: center;
+}
+
+#home_img{
+    height: 340px;
+    width: 470px;
+    transition: .2s;
+}
+#home_img:hover{
+    transform: scale(1.1);
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css';
+import './chat.css';
 import { connect } from 'react-redux';
 import { get_users } from "../../store/action";
 import firebase from '../../config/firebase';
@@ -69,12 +69,12 @@ class Chat extends Component{
                     <h2> <img src={user.profile} /> <span id="head">Welcome {user.name} </span></h2>
                 </div>
                 <div className="mainDiv">
-                    <div>
+                    <div className="users">
                         <h3>Chat Users:</h3>
-                        <ul>
+                        <ul id="chatUsers">
                             {this.props.users.map((v,i)=>{
-                                return  user.uid !== v.uid && <li key={i}><img src={v.profile} alt="" width="20" /> {v.name} 
-                                <button onClick={()=> this.chat(v)}>Chat</button></li> 
+                                return  user.uid !== v.uid && <li key={i} id="check"><img src={v.profile} alt="" width="30" /> {v.name} &nbsp; 
+                                <button className="chatBtn" onClick={()=> this.chat(v)}>Chat</button></li> 
                                 }) }
                         </ul>
                     </div>
@@ -86,12 +86,12 @@ class Chat extends Component{
                         {this.state.chat_user.name}
                         <ul>
                             {this.state.chats.map((v,i)=>{
-                                return <li style={{color : v.uid === user.uid ? "black" : "darkblue",
+                                return <li style={{color : v.uid === user.uid ? "#71CEBB" : "#7188CE",
                                 textAlign: "center",
                                 textAlign : v.uid === user.uid ? "right" : "left",
                                 marginRight: "25px",
                                 listStyleType : "none",
-                                backgroundColor : v.uid === user.uid ? "darkgray" : "whitesmoke"
+                                backgroundColor : v.uid === user.uid ? "#484A51" : "#31343B"
                             }} key={i}>{v.message}</li>
                             })}
                         </ul>
