@@ -36,12 +36,19 @@ class Chat extends Component{
             name: user.name,
             uid: user.uid
         })
+        this.setState({
+            message: ""
+        })
     }
 
     get_messages = (merge_uid) => {
         // console.log(uid)
         firebase.database().ref('/').child(`chats/ ${merge_uid}`).on("child_added",messages=>{
             console.log( "message",messages.val());
+            this.state.chats.push(messages.val());
+            this.setState({
+                chats: this.state.chats
+            })
         })
     }
 
@@ -79,18 +86,24 @@ class Chat extends Component{
                         {this.state.chat_user.name}
                         <ul>
                             {this.state.chats.map((v,i)=>{
-                                return <li key={i}>{v.message}</li>
+                                return <li style={{color : v.uid === user.uid ? "black" : "darkblue",
+                                textAlign: "center",
+                                textAlign : v.uid === user.uid ? "right" : "left",
+                                marginRight: "25px",
+                                listStyleType : "none",
+                                backgroundColor : v.uid === user.uid ? "darkgray" : "whitesmoke"
+                            }} key={i}>{v.message}</li>
                             })}
                         </ul>
-                            </h4>
-                            :
-                            <h4 style={{textAlign:"center"}}> No user</h4>
-                    }
                         <div className="messageInput">
                              
                             <input value={this.state.message} onChange={(e)=> this.setState({message: e.target.value})} type="text" placeholder="Enter Message"/>
                             <button className="sendBtn" onClick={()=> this.send_message()}>Send</button>
                         </div>
+                            </h4>
+                            :
+                            <h4 style={{textAlign:"center"}}> No user</h4>
+                        }
                         
                     </div>
                 </div>

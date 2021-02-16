@@ -27,7 +27,7 @@ input{
 
 .messageInput{
     position: relative;
-    top: 40%;
+    text-align: center;
 }
 
 .sendBtn{
