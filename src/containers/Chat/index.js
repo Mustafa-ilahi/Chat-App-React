@@ -38,13 +38,11 @@ class Chat extends Component{
         })
     }
 
-    get_messages = (uid) => {
-        firebase.database().ref('/').child(`chats/${uid}`).on("child_added",(messages)=>{
-            this.state.chats.push(messages.val());
-            this.setState({
-                chats: this.state.chats
-            })
-        })    
+    get_messages = (merge_uid) => {
+        // console.log(uid)
+        firebase.database().ref('/').child(`chats/ ${merge_uid}`).on("child_added",messages=>{
+            console.log( "message",messages.val());
+        })
     }
 
     uid_merge = (uid1,uid2) =>{
@@ -56,7 +54,7 @@ class Chat extends Component{
         }
     }
     render(){
-        console.log(this.props.chat);
+        // console.log(this.state.chat);
         let user = this.props.current_user;
         return(
             <div>
