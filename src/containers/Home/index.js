@@ -16,7 +16,7 @@ class Home extends Component{
         <img src={chat_home} id="home_img"/>
         </div>
         <br/>
-        <FacebookLoginButton style={{width: "200px",fontSize:"16px",margin: "0 auto"}} onClick={() => this.props.facebook_login(this.props.history)} />
+        <FacebookLoginButton style={{width: "200px",fontSize:"14px",margin: "0 auto"}} onClick={() => this.props.facebook_login(this.props.history)} />
         {/* <button id="loginBtn" onClick={()=> }>Facebook Login</button> */}
       </div>
     )
